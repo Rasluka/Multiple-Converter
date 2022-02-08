@@ -10,6 +10,8 @@ const uOneSel = document.getElementById('unitOne');
 const uTwoSel = document.getElementById('unitTwo');
 const askInputTxt = document.getElementById('askInputTitle');
 
+// Adding all the event listener for each button
+
 convertBtt.addEventListener('click', function(){
 
     if(inputValueTxt.value != ''){
@@ -26,23 +28,31 @@ convertBtt.addEventListener('click', function(){
 })
 
 resetBtt.addEventListener('click', function(){
-    decNumberTxt.value = '';
+    uOneSel.value = 'Decimal';
+    uTwoSel.value = 'Binary';
+    inputValueTxt.value = '';
+    resultTxt.innerText = '';
 })
 
 uOneSel.addEventListener('change', function(){
+    console.log(uTwoSel.options)
     convertTitle.innerText = 'Convert from ' + uOneSel.value + ' to ' + uTwoSel.value;
     askInputTxt.innerText = 'Enter the ' + uOneSel.value + ' value:'
+    doesItMakeSense();
 })
 
 uTwoSel.addEventListener('change', function(){
     convertTitle.innerText = 'Convert from ' + uOneSel.value + ' to ' + uTwoSel.value;
     convertBtt.innerText = 'Convert to ' + uTwoSel.value;
+    doesItMakeSense();
 })
+
 
 
 // Decimal to Binary function:
 function decToBin(decNumber){
     var binNumberStr = '';
+    var originalNumber = decNumber;
 
     while ((decNumber / 2 )  >= 1) {
 
@@ -65,7 +75,7 @@ function decToBin(decNumber){
         }
     }
 
-    return 'The result is ' + binNumberStr.split("").reverse().join("");
+    return originalNumber + ' converted to binary is ' + binNumberStr.split("").reverse().join("");
 }
 
 // Binary to Decimal funciton:
@@ -78,5 +88,21 @@ function binToDec(binNumber){
         decimalNumber += binSplitted[i] * (2 ** (binLenght - i));
     }
 
-    return 'The final result is: ' + decimalNumber;
+    return binNumber + 'converted to decimal is ' + decimalNumber;
+}
+
+// To check if the same unit option have selected
+function doesItMakeSense(){
+    if(uOneSel.value == uTwoSel.value){
+        convertTitle.innerText += '?';
+        resultTxt.innerText = 'Doesn\'t make any sense, does it?'
+        convertBtt.disabled = true;
+
+        setTimeout(function(){resultTxt.innerText = '';}, 4000)
+        
+
+    }
+    else{
+        convertBtt.disabled = false;
+    }
 }

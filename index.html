@@ -5,31 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert Me</title>
+    
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     
 
-    <div>
+    <div class="convertionArea">
         <h1 id="covertTitle">Convert from Decimal to Binary</h1>
-
-        <select id="unitOne">
+        
+        <label class="subTitleTxt">Convert from</label>
+        <select class="unitOptions" id="unitOne">
             <option value="Decimal">Decimal</option>
             <option value="Binary">Binary</option>
         </select>
 
-        <select id="unitTwo">
+        <label class="subTitleTxt">to</label>
+
+        <select class="unitOptions" id="unitTwo">
             <option value="Binary">Binary</option>
             <option value="Decimal">Decimal</option>
         </select>
 
-        <label id="askInputTitle">Enter the decimal number</label>
+        <label class="subTitleTxt" id="askInputTitle">Enter the decimal number</label>
         <input type="text" id="inputValueTxt">
 
-        <button id="convertBtt">Convert to Binary</button>
-        <button id="resetBtt">Reset</button>
-        <button id="swapBtt">Swap</button>
+        <button class="btt" id="convertBtt">Convert to Binary</button>
+        <button class="btt" id="resetBtt">Reset</button>
+        <!-- <button class="btt" id="swapBtt">Swap</button> -->
 
         <p id="result"></p>
     </div>
